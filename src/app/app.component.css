@@ -1,0 +1,10 @@
+.margins{
+    margin: auto;
+    object-position: center;
+    display: flex;
+    align-content: center;
+    flex-direction: flex-start;
+    justify-content: center;
+}
+
+

@@ -1,0 +1,56 @@
+<br>
+<div *ngIf="cartItems.length === 0" class="alert alert-warning empty-cart-message"> 
+  <h3>No Item in Cart !</h3>
+</div>
+
+<div *ngIf="cartItems.length > 0" class="cart-container">
+  <div class="cart-panel">
+    <app-cart-item *ngFor="let item of cartItems" [cartitem]="item" (removeItem)="removeItem($event)"></app-cart-item>
+
+    <h4>Total:{{ getTotal() | currency:'USD' }} <button class="btn btn-danger" (click)="clearCart()"  >Clear Cart</button> </h4>
+  </div>
+  
+  <div class="form-margin">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- {{userForm.value | json}}
+      {{currentUser | json}} -->
+      <div class="form-group">
+        <label ><Strong>Name</Strong></label>
+        <input  name="userName" type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched" 
+                  required #name="ngModel" [(ngModel)]="currentUser.userName" >
+                  <small class="text-danger" [class.d-none]="name.valid ||  name.untouched">
+                    *Name is required
+                  </small>
+      </div>
+
+      <div class="form-group">
+        <label > <strong>Address </strong> </label>
+        <input  name="address" type="text" class="form-control" [class.is-invalid]="addr.invalid && addr.touched" 
+                  required #addr="ngModel" [(ngModel)]="currentUser.address">
+                  <small class="text-danger" [class.d-none]="addr.valid || addr.untouched">
+                    *Address is required
+                  </small>
+      </div>
+
+      <div class="form-group">
+        <label > <strong>Credit Card Number</strong></label>
+        <input name="creditCardNumber" type="text" pattern="^\d[0-9]{10,15}$" class="form-control"
+                [class.is-invalid]="creditNum.invalid && creditNum.touched" 
+                required #creditNum="ngModel" [(ngModel)]="currentUser.creditCardNumber">
+                <small class="text-danger" [class.d-none]="creditNum.valid || creditNum.untouched">
+                  *Card Number is required & must be 11-16 digits <br>
+                </small>
+                <small >
+                  We will never share your payment details with anyone else 
+                </small>
+      </div>
+
+      <br> <button [disabled]="userForm.form.invalid" class="btn btn-success" type="submit" >Checkout</button> <br>
+    </form>
+  </div>
+</div>
+
+ 
+
+
+

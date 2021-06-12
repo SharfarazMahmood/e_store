@@ -1,0 +1,9 @@
+<ul class="cart-item" >
+    <div class=""><img src="{{cartitem.url}}" alt=""></div>
+    <div class=" cart-item-details">
+    <p> <strong>{{cartitem.name}}</strong> </p>
+    <p>Price: {{cartitem.price | currency:'USD' }}</p>
+    Quantity: <span> <input [(ngModel)]="cartitem.quantity" min="1" class="select-input" type="number"> </span>
+    <span> <button class="btn btn-outline-danger btn-padding" (click)="remove(cartitem)">Remove Item</button> </span>
+    </div>
+</ul>

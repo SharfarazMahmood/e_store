@@ -1,0 +1,15 @@
+<div  class="product-container"  *ngFor="let product of productList" > 
+    <div class="detail-container">
+        <img class="product-image" src="{{ product.url }}" alt="No images found" >
+        <div class="detail-item">
+            <strong>{{ product.name }}</strong><br>
+            Price: {{ product.price | currency:'USD' }} <br>
+            <p>{{product.description}}</p><br>
+            Quantity: <br> <input  [(ngModel)]="quantity" min="1" class="select-input btn btn-outline-secondary" type="number"> 
+            <br> <button class="btn btn-primary btn-padding" (click)="addToCart(product, quantity)"  >Add to Cart</button> <br>
+            <a class="back-link" routerLink="/"> 
+                <small> <strong>back to product list</strong> </small>
+            </a>
+        </div>
+    </div>
+</div >

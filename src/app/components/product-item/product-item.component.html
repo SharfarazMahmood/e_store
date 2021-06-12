@@ -1,0 +1,14 @@
+<div  class="product-container">
+    <img class="product-image" (click)="onSelect(product)" src="{{ product.url }}" alt="No images found" >
+    <strong >{{ product.name }}</strong>
+    Price: {{ product.price | currency:'USD' }}
+    <button class="btn btn-light btn-padding" (click)="onSelect(product)" > Details </button>
+
+    <input [(ngModel)]="quantity" min="1" class="select-input btn btn-outline-secondary btn-padding" type="number">
+    <button class="btn btn-primary btn-padding" (click)="addToCart(product, quantity)" >Add to Cart</button>
+</div >
+
+
+
+
+
